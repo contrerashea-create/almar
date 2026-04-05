@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-heading);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -39,6 +39,12 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  /* Tokens de marca Almar */
+  --color-navy: var(--navy);
+  --color-navy-foreground: var(--navy-foreground);
+  --color-blue: var(--blue);
+  --color-blue-foreground: var(--blue-foreground);
+  --color-navy-light: var(--navy-light);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,72 +55,82 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* ── Almar Brand Identity ───────────────────────────────────────────
+     Basado en almarmx.com — navy profundo + azul acento
+     Primary navy: #043558  |  Blue accent: #3069aa
+  ──────────────────────────────────────────────────────────────────── */
+  --navy:            oklch(0.23 0.065 252);   /* #043558 — navy profundo */
+  --navy-foreground: oklch(1 0 0);             /* blanco */
+  --navy-light:      oklch(0.30 0.07 252);    /* navy ligeramente más claro */
+  --blue:            oklch(0.50 0.125 248);   /* #3069aa — azul acento */
+  --blue-foreground: oklch(1 0 0);             /* blanco */
+
+  --background:      oklch(1 0 0);             /* blanco puro */
+  --foreground:      oklch(0.18 0.04 252);    /* navy muy oscuro para texto */
+  --card:            oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.04 252);
+  --popover:         oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.04 252);
+  --primary:         oklch(0.23 0.065 252);   /* = navy */
+  --primary-foreground: oklch(1 0 0);
+  --secondary:       oklch(0.96 0.01 252);    /* azul muy suave / casi blanco */
+  --secondary-foreground: oklch(0.23 0.065 252);
+  --muted:           oklch(0.96 0.008 252);
+  --muted-foreground: oklch(0.52 0.03 252);
+  --accent:          oklch(0.50 0.125 248);   /* = blue */
+  --accent-foreground: oklch(1 0 0);
+  --destructive:     oklch(0.577 0.245 27.325);
+  --border:          oklch(0.88 0.01 252);
+  --input:           oklch(0.92 0.008 252);
+  --ring:            oklch(0.50 0.125 248);
+  --chart-1:         oklch(0.23 0.065 252);
+  --chart-2:         oklch(0.50 0.125 248);
+  --chart-3:         oklch(0.38 0.09 252);
+  --chart-4:         oklch(0.62 0.10 248);
+  --chart-5:         oklch(0.72 0.08 248);
+  --radius: 0.5rem;
+  --sidebar:         oklch(0.97 0.008 252);
+  --sidebar-foreground: oklch(0.18 0.04 252);
+  --sidebar-primary: oklch(0.23 0.065 252);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent:  oklch(0.93 0.01 252);
+  --sidebar-accent-foreground: oklch(0.23 0.065 252);
+  --sidebar-border:  oklch(0.88 0.01 252);
+  --sidebar-ring:    oklch(0.50 0.125 248);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background:      oklch(0.14 0.04 252);
+  --foreground:      oklch(0.96 0.01 252);
+  --card:            oklch(0.18 0.04 252);
+  --card-foreground: oklch(0.96 0.01 252);
+  --popover:         oklch(0.18 0.04 252);
+  --popover-foreground: oklch(0.96 0.01 252);
+  --primary:         oklch(0.65 0.13 248);
+  --primary-foreground: oklch(0.14 0.04 252);
+  --secondary:       oklch(0.22 0.05 252);
+  --secondary-foreground: oklch(0.96 0.01 252);
+  --muted:           oklch(0.22 0.05 252);
+  --muted-foreground: oklch(0.65 0.03 252);
+  --accent:          oklch(0.65 0.13 248);
+  --accent-foreground: oklch(0.14 0.04 252);
+  --destructive:     oklch(0.704 0.191 22.216);
+  --border:          oklch(1 0 0 / 10%);
+  --input:           oklch(1 0 0 / 15%);
+  --ring:            oklch(0.65 0.13 248);
+  --chart-1:         oklch(0.65 0.13 248);
+  --chart-2:         oklch(0.50 0.10 252);
+  --chart-3:         oklch(0.72 0.10 248);
+  --chart-4:         oklch(0.38 0.08 252);
+  --chart-5:         oklch(0.28 0.06 252);
+  --sidebar:         oklch(0.18 0.04 252);
+  --sidebar-foreground: oklch(0.96 0.01 252);
+  --sidebar-primary: oklch(0.65 0.13 248);
+  --sidebar-primary-foreground: oklch(0.14 0.04 252);
+  --sidebar-accent:  oklch(0.22 0.05 252);
+  --sidebar-accent-foreground: oklch(0.96 0.01 252);
+  --sidebar-border:  oklch(1 0 0 / 10%);
+  --sidebar-ring:    oklch(0.65 0.13 248);
 }
 
 @layer base {
@@ -127,4 +143,43 @@
   html {
     @apply font-sans;
   }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+/* ── Ken Burns hero animation ── */
+@keyframes ken-burns {
+  0%   { transform: scale(1)    translateX(0)      translateY(0); }
+  100% { transform: scale(1.08) translateX(-1.5%)  translateY(-1%); }
+}
+.animate-ken-burns {
+  animation: ken-burns 18s ease-in-out infinite alternate;
+}
+
+/* ── Utilidades de marca Almar ── */
+@layer components {
+  .input {
+    @apply w-full px-4 py-2.5 border border-border rounded-xl text-sm bg-background focus:outline-none focus:ring-2 focus:ring-blue/30 transition-all;
+  }
+}
+
+@layer utilities {
+  .text-navy          { color: var(--navy); }
+  .bg-navy            { background-color: var(--navy); }
+  .text-navy-light    { color: var(--navy-light); }
+  .bg-navy-light      { background-color: var(--navy-light); }
+  .text-blue          { color: var(--blue); }
+  .bg-blue            { background-color: var(--blue); }
+  .border-navy        { border-color: var(--navy); }
+  .border-blue        { border-color: var(--blue); }
+  /* Alias de brand para no romper componentes existentes */
+  .text-brand         { color: var(--navy); }
+  .bg-brand           { background-color: var(--navy); }
+  .text-gold          { color: var(--blue); }
+  .bg-gold            { background-color: var(--blue); }
+  .border-gold        { border-color: var(--blue); }
+  .text-brand-foreground  { color: var(--navy-foreground); }
+  .text-gold-foreground   { color: var(--blue-foreground); }
+  .bg-gold-foreground     { background-color: var(--blue-foreground); }
 }

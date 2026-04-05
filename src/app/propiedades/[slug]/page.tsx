@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const property = getPropertyBySlug(slug);
   if (!property) return { title: "Propiedad no encontrada" };
   return {
-    title: `${property.title} — ${property.zone}`,
+    title: `${property.title} — ${property.location.zone}`,
     description: property.description,
     openGraph: {
       title: property.title,

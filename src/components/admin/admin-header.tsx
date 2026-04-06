@@ -3,10 +3,12 @@
 import { Bell, Search, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { agents } from "@/lib/mock-data";
+import { useLang, LangProvider } from "@/contexts/lang-context";
 
 const pao = agents[0];
 
-export default function AdminHeader({ title }: { title: string }) {
+function AdminHeaderInner({ title }: { title: string }) {
+  const { lang, setLang } = useLang();
   return (
     <header className="h-16 bg-white border-b border-border flex items-center justify-between px-6 shrink-0">
       <h1 className="font-heading font-bold text-navy text-lg">{title}</h1>
@@ -17,6 +19,16 @@ export default function AdminHeader({ title }: { title: string }) {
           <Search className="w-3.5 h-3.5 shrink-0" />
           <span className="text-xs">Buscar...</span>
         </div>
+
+        {/* Lang toggle */}
+        <button
+          onClick={() => setLang(lang === "es" ? "en" : "es")}
+          className="flex items-center gap-1 text-xs font-medium border border-border rounded-full px-3 py-1.5 text-muted-foreground hover:text-navy hover:border-navy/40 transition-all select-none"
+        >
+          <span className={lang === "es" ? "font-semibold text-navy" : ""}>ES</span>
+          <span className="text-border">|</span>
+          <span className={lang === "en" ? "font-semibold text-navy" : ""}>EN</span>
+        </button>
 
         {/* Ver sitio */}
         <Link
@@ -48,5 +60,13 @@ export default function AdminHeader({ title }: { title: string }) {
         </div>
       </div>
     </header>
+  );
+}
+
+export default function AdminHeader({ title }: { title: string }) {
+  return (
+    <LangProvider>
+      <AdminHeaderInner title={title} />
+    </LangProvider>
   );
 }

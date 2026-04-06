@@ -1,7 +1,10 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Clock } from "lucide-react";
 import { blogPosts } from "@/lib/mock-data";
 import FadeIn, { StaggerContainer, StaggerItem } from "@/components/ui/fade-in";
+import { useLang } from "@/contexts/lang-context";
 
 const categoryColors: Record<string, string> = {
   mercado: "bg-blue/10 text-blue",
@@ -11,15 +14,8 @@ const categoryColors: Record<string, string> = {
   lifestyle: "bg-pink-50 text-pink-700",
 };
 
-const categoryLabels: Record<string, string> = {
-  mercado: "Mercado",
-  consejos: "Consejos",
-  noticias: "Noticias",
-  destinos: "Destinos",
-  lifestyle: "Lifestyle",
-};
-
 export default function BlogPreview() {
+  const { t, lang } = useLang();
   const posts = blogPosts.filter((p) => p.published).slice(0, 3);
 
   return (
@@ -29,20 +25,20 @@ export default function BlogPreview() {
         <FadeIn className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div>
             <p className="text-blue text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-              Blog
+              {t.blogPreview.eyebrow}
             </p>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-navy">
-              Todo sobre la Riviera Maya
+              {t.blogPreview.title}
             </h2>
             <p className="text-muted-foreground mt-3 max-w-md text-base leading-relaxed">
-              Análisis de mercado, tendencias de inversión y guías de destino escritas por quienes viven y operan en la región.
+              {t.blogPreview.subtitle}
             </p>
           </div>
           <Link
             href="/blog"
             className="flex items-center gap-2 text-sm font-semibold text-navy border border-navy rounded-full px-5 py-2.5 hover:bg-navy hover:text-white transition-all duration-200 shrink-0 self-start sm:self-auto"
           >
-            Ver todos los artículos
+            {t.blogPreview.allArticles}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </FadeIn>
@@ -72,7 +68,7 @@ export default function BlogPreview() {
                 {/* Category + reading time */}
                 <div className="flex items-center gap-3 mb-3">
                   <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full ${categoryColors[post.category] ?? "bg-muted text-muted-foreground"}`}>
-                    {categoryLabels[post.category] ?? post.category}
+                    {(t.blogPreview.categories as Record<string, string>)[post.category] ?? post.category}
                   </span>
                   <span className="flex items-center gap-1 text-xs text-muted-foreground">
                     <Clock className="w-3 h-3" />
@@ -100,7 +96,7 @@ export default function BlogPreview() {
                   <div>
                     <p className="text-xs font-medium text-foreground">{post.author}</p>
                     <p className="text-[10px] text-muted-foreground">
-                      {new Date(post.publishedAt).toLocaleDateString("es-MX", {
+                      {new Date(post.publishedAt).toLocaleDateString(lang === "es" ? "es-MX" : "en-US", {
                         year: "numeric",
                         month: "long",
                         day: "numeric",
@@ -108,7 +104,7 @@ export default function BlogPreview() {
                     </p>
                   </div>
                   <span className="ml-auto text-blue text-xs font-semibold group-hover:underline">
-                    Leer →
+                    {t.blogPreview.read}
                   </span>
                 </div>
               </div>

@@ -3,6 +3,7 @@
 import { Phone, MessageCircle, Heart } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/hooks/use-favorites";
+import { useLang } from "@/contexts/lang-context";
 
 interface StickyContactBarProps {
   propertyId: string;
@@ -17,6 +18,7 @@ export default function StickyContactBar({
   phoneHref,
   price,
 }: StickyContactBarProps) {
+  const { t } = useLang();
   const { isFavorite, toggle } = useFavorites();
   const saved = isFavorite(propertyId);
 
@@ -34,7 +36,7 @@ export default function StickyContactBar({
               "w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-200 shrink-0",
               saved ? "bg-red-500" : "bg-white/10 hover:bg-white/20"
             )}
-            aria-label={saved ? "Quitar de favoritos" : "Guardar"}
+            aria-label={saved ? t.stickyBar.removeFromFavorites : t.stickyBar.save}
           >
             <Heart className={cn("w-4 h-4", saved ? "fill-white text-white" : "text-white/70")} />
           </button>
@@ -45,7 +47,7 @@ export default function StickyContactBar({
             className="h-10 px-4 flex items-center gap-1.5 bg-white/10 hover:bg-white/20 border border-white/20 text-white text-sm font-semibold rounded-xl transition-colors shrink-0"
           >
             <Phone className="w-4 h-4" />
-            Llamar
+            {t.stickyBar.call}
           </a>
 
           {/* WhatsApp */}
@@ -56,7 +58,7 @@ export default function StickyContactBar({
             className="h-10 px-4 flex items-center gap-1.5 bg-[#25D366] hover:bg-[#20BA5C] text-white text-sm font-semibold rounded-xl transition-colors shrink-0"
           >
             <MessageCircle className="w-4 h-4" />
-            WhatsApp
+            {t.stickyBar.whatsapp}
           </a>
         </div>
       </div>

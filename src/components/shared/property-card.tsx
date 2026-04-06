@@ -5,31 +5,31 @@ import { Bed, Bath, Maximize2, MapPin, Heart } from "lucide-react";
 import { Property, formatPrice } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/hooks/use-favorites";
+import { useLang } from "@/contexts/lang-context";
 
 interface PropertyCardProps {
   property: Property;
   className?: string;
 }
 
-const statusLabels: Record<string, { label: string; color: string }> = {
-  disponible: { label: "Disponible", color: "bg-emerald-500" },
-  "en-negociacion": { label: "En negociación", color: "bg-amber-500" },
-  vendida: { label: "Vendida", color: "bg-red-500" },
-  rentada: { label: "Rentada", color: "bg-blue-500" },
-};
-
-const typeLabels: Record<string, string> = {
-  casa: "Casa",
-  departamento: "Departamento",
-  penthouse: "Penthouse",
-  villa: "Villa",
-  terreno: "Terreno",
-  local: "Local",
-  oficina: "Oficina",
+const statusColors: Record<string, string> = {
+  disponible: "bg-emerald-500",
+  "en-negociacion": "bg-amber-500",
+  vendida: "bg-red-500",
+  rentada: "bg-blue-500",
 };
 
 export default function PropertyCard({ property, className }: PropertyCardProps) {
-  const status = statusLabels[property.status] ?? statusLabels.disponible;
+  const { t } = useLang();
+  const statusLabelMap: Record<string, string> = {
+    disponible: t.propertyCard.available,
+    "en-negociacion": t.propertyCard.inNegotiation,
+    vendida: t.propertyCard.sold,
+    rentada: t.propertyCard.rented,
+    borrador: t.propertyCard.available,
+  };
+  const statusLabel = statusLabelMap[property.status] ?? t.propertyCard.available;
+  const statusColor = statusColors[property.status] ?? statusColors.disponible;
   const { isFavorite, toggle } = useFavorites();
   const saved = isFavorite(property.id);
 
@@ -53,20 +53,20 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
         {/* Badges top-left */}
         <div className="absolute top-3 left-3 flex flex-col gap-1.5">
           <span className="px-2.5 py-1 bg-navy text-white text-[10px] font-bold tracking-widest uppercase rounded-full">
-            {property.operation === "venta" ? "Venta" : "Renta"}
+            {property.operation === "venta" ? t.propertyCard.sale : t.propertyCard.rent}
           </span>
           {property.featured && (
             <span className="px-2.5 py-1 bg-blue text-white text-[10px] font-bold tracking-widest uppercase rounded-full">
-              Destacada
+              {t.propertyCard.featured}
             </span>
           )}
         </div>
 
         {/* Status badge top-right */}
         <div className="absolute top-3 right-3">
-          <span className={cn("flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold text-white", status.color)}>
+          <span className={cn("flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-semibold text-white", statusColor)}>
             <span className="w-1.5 h-1.5 rounded-full bg-white/80" />
-            {status.label}
+            {statusLabel}
           </span>
         </div>
 
@@ -77,7 +77,7 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
             "absolute bottom-3 right-3 w-8 h-8 rounded-full backdrop-blur-sm flex items-center justify-center transition-all duration-200 shadow-sm",
             saved ? "bg-red-500 scale-110" : "bg-white/90 hover:bg-white"
           )}
-          aria-label={saved ? "Quitar de favoritos" : "Guardar propiedad"}
+          aria-label={saved ? t.propertyCard.removeFromFavorites : t.propertyCard.saveProperty}
         >
           <Heart className={cn(
             "w-4 h-4 transition-all duration-200",
@@ -88,7 +88,7 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
         {/* Tipo */}
         <div className="absolute bottom-3 left-3">
           <span className="px-2.5 py-1 bg-black/50 backdrop-blur-sm text-white text-[10px] font-medium rounded-full">
-            {typeLabels[property.type] ?? property.type}
+            {(t.propertyCard.typeLabels as Record<string, string>)[property.type] ?? property.type}
           </span>
         </div>
       </div>
@@ -131,7 +131,7 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
         ) : (
           <div className="flex items-center gap-1 text-sm text-muted-foreground mb-4">
             <Maximize2 className="w-3.5 h-3.5" />
-            <span>{property.specs.landM2?.toLocaleString()} m² de terreno</span>
+            <span>{property.specs.landM2?.toLocaleString()} {t.propertyCard.landM2}</span>
           </div>
         )}
 
@@ -147,11 +147,11 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
               </p>
             )}
             {property.operation === "renta" && (
-              <p className="text-xs text-muted-foreground">/mes</p>
+              <p className="text-xs text-muted-foreground">{t.propertyCard.perMonth}</p>
             )}
           </div>
           <span className="text-blue text-xs font-semibold group-hover:underline">
-            Ver más →
+            {t.propertyCard.seeMore}
           </span>
         </div>
       </div>

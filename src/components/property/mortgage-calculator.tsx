@@ -2,12 +2,14 @@
 
 import { useState, useMemo } from "react";
 import { Calculator } from "lucide-react";
+import { useLang } from "@/contexts/lang-context";
 
 interface MortgageCalculatorProps {
   propertyPrice: number;
 }
 
 export default function MortgageCalculator({ propertyPrice }: MortgageCalculatorProps) {
+  const { t } = useLang();
   const [enganche, setEnganche] = useState(20);
   const [plazo, setPlazo] = useState(20);
   const [tasa, setTasa] = useState(10.5);
@@ -37,14 +39,14 @@ export default function MortgageCalculator({ propertyPrice }: MortgageCalculator
     <div className="bg-white rounded-2xl border border-border p-6">
       <div className="flex items-center gap-2 mb-6">
         <Calculator className="w-5 h-5 text-navy" />
-        <h3 className="font-heading font-bold text-navy text-lg">Calculadora hipotecaria</h3>
+        <h3 className="font-heading font-bold text-navy text-lg">{t.mortgage.title}</h3>
       </div>
 
       <div className="space-y-5">
         {/* Enganche */}
         <div>
           <div className="flex justify-between mb-1.5">
-            <label className="text-sm font-medium text-foreground">Enganche</label>
+            <label className="text-sm font-medium text-foreground">{t.mortgage.downPayment}</label>
             <span className="text-sm font-bold text-navy">{enganche}% — {fmt(calc.enganchemonto)}</span>
           </div>
           <input
@@ -60,8 +62,8 @@ export default function MortgageCalculator({ propertyPrice }: MortgageCalculator
         {/* Plazo */}
         <div>
           <div className="flex justify-between mb-1.5">
-            <label className="text-sm font-medium text-foreground">Plazo</label>
-            <span className="text-sm font-bold text-navy">{plazo} años</span>
+            <label className="text-sm font-medium text-foreground">{t.mortgage.term}</label>
+            <span className="text-sm font-bold text-navy">{plazo} {t.mortgage.years}</span>
           </div>
           <input
             type="range" min={5} max={30} step={5} value={plazo}
@@ -69,14 +71,14 @@ export default function MortgageCalculator({ propertyPrice }: MortgageCalculator
             className="w-full accent-navy"
           />
           <div className="flex justify-between text-[10px] text-muted-foreground mt-1">
-            <span>5 años</span><span>30 años</span>
+            <span>5 {t.mortgage.years}</span><span>30 {t.mortgage.years}</span>
           </div>
         </div>
 
         {/* Tasa */}
         <div>
           <div className="flex justify-between mb-1.5">
-            <label className="text-sm font-medium text-foreground">Tasa de interés anual</label>
+            <label className="text-sm font-medium text-foreground">{t.mortgage.rate}</label>
             <span className="text-sm font-bold text-navy">{tasa}%</span>
           </div>
           <input
@@ -93,24 +95,24 @@ export default function MortgageCalculator({ propertyPrice }: MortgageCalculator
       {/* Resultados */}
       <div className="mt-6 pt-5 border-t border-border space-y-3">
         <div className="bg-navy rounded-xl p-4 text-center">
-          <p className="text-white/70 text-xs mb-1">Mensualidad estimada</p>
+          <p className="text-white/70 text-xs mb-1">{t.mortgage.monthlyPayment}</p>
           <p className="font-heading text-3xl font-bold text-white">{fmt(calc.mensualidad)}</p>
-          <p className="text-white/50 text-xs mt-1">/ mes por {plazo} años</p>
+          <p className="text-white/50 text-xs mt-1">{t.mortgage.perMonth} {plazo} {t.mortgage.years}</p>
         </div>
         <div className="grid grid-cols-2 gap-3">
           <div className="bg-muted rounded-xl p-3 text-center">
-            <p className="text-muted-foreground text-[10px] mb-1">Monto a financiar</p>
+            <p className="text-muted-foreground text-[10px] mb-1">{t.mortgage.financingAmount}</p>
             <p className="font-semibold text-navy text-sm">{fmt(calc.monto)}</p>
           </div>
           <div className="bg-muted rounded-xl p-3 text-center">
-            <p className="text-muted-foreground text-[10px] mb-1">Total intereses</p>
+            <p className="text-muted-foreground text-[10px] mb-1">{t.mortgage.totalInterest}</p>
             <p className="font-semibold text-navy text-sm">{fmt(calc.totalIntereses)}</p>
           </div>
         </div>
       </div>
 
       <p className="text-[10px] text-muted-foreground mt-3 text-center leading-relaxed">
-        Cálculo estimado. Consulta con tu banco para condiciones reales.
+        {t.mortgage.disclaimer}
       </p>
     </div>
   );

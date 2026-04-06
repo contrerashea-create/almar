@@ -5,8 +5,10 @@ import Link from "next/link";
 import { Heart, ArrowLeft } from "lucide-react";
 import { properties } from "@/lib/mock-data";
 import PropertyCard from "@/components/shared/property-card";
+import { useLang } from "@/contexts/lang-context";
 
 export default function FavoritosPage() {
+  const { t } = useLang();
   const [ids, setIds] = useState<string[]>([]);
   const [hydrated, setHydrated] = useState(false);
 
@@ -38,18 +40,18 @@ export default function FavoritosPage() {
             className="inline-flex items-center gap-2 text-white/60 hover:text-white text-sm mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Volver al catálogo
+            {t.favorites.backToCatalog}
           </Link>
           <div className="flex items-center gap-3 mb-2">
             <Heart className="w-6 h-6 text-red-400 fill-red-400" />
             <h1 className="font-heading text-3xl sm:text-4xl font-bold text-white">
-              Mis favoritos
+              {t.favorites.title}
             </h1>
           </div>
           <p className="text-white/60 text-base">
             {saved.length === 0
-              ? "Aún no has guardado ninguna propiedad."
-              : `${saved.length} propiedad${saved.length !== 1 ? "es" : ""} guardada${saved.length !== 1 ? "s" : ""}`}
+              ? t.favorites.empty
+              : `${saved.length} ${saved.length !== 1 ? t.favorites.propertySaved_other : t.favorites.propertySaved_one}`}
           </p>
         </div>
       </section>
@@ -62,16 +64,16 @@ export default function FavoritosPage() {
               <Heart className="w-9 h-9 text-muted-foreground/40" />
             </div>
             <h2 className="font-heading text-xl font-bold text-navy mb-2">
-              Nada guardado aún
+              {t.favorites.nothingSaved}
             </h2>
             <p className="text-muted-foreground text-sm mb-6 max-w-sm mx-auto">
-              Toca el corazón en cualquier propiedad para guardarla aquí y consultarla cuando quieras.
+              {t.favorites.nothingSavedSub}
             </p>
             <Link
               href="/propiedades"
               className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white text-sm font-semibold rounded-full hover:bg-navy-light transition-colors"
             >
-              Explorar propiedades
+              {t.favorites.explore}
             </Link>
           </div>
         ) : (

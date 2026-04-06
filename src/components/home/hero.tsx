@@ -4,23 +4,37 @@ import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import CountUp from "@/components/ui/count-up";
-
-const operaciones = ["Venta", "Renta"];
-const tipos = ["Todos", "Casa", "Departamento", "Villa", "Penthouse", "Terreno", "Local"];
-const zonas = ["Toda la Riviera Maya", "Tulum", "Playa del Carmen", "Akumal", "Cobá", "Puerto Morelos"];
+import { useLang } from "@/contexts/lang-context";
 
 export default function Hero() {
-  const [operacion, setOperacion] = useState("Venta");
-  const [tipo, setTipo] = useState("Todos");
+  const { t } = useLang();
+  const operaciones = [t.hero.sell, t.hero.rent];
+  const tipos = t.hero.types;
+  const zonas = t.hero.zones;
+
+  const [operacion, setOperacion] = useState<string>(t.hero.sell);
+  const [tipo, setTipo] = useState<string>(tipos[0]);
   const [zona, setZona] = useState("");
   const [query, setQuery] = useState("");
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const params = new URLSearchParams();
-    if (operacion !== "Venta") params.set("operacion", operacion.toLowerCase());
-    if (tipo !== "Todos") params.set("tipo", tipo.toLowerCase());
-    if (zona && zona !== "Toda la Riviera Maya") params.set("zona", zona.toLowerCase());
+    // Map translated values back to Spanish slugs for URL
+    const isSell = operacion === t.hero.sell;
+    if (!isSell) params.set("operacion", "renta");
+    const isAllTypes = tipo === tipos[0];
+    if (!isAllTypes) {
+      const typeSlugs = ["casa", "departamento", "villa", "penthouse", "terreno", "local"];
+      const idx = t.hero.types.indexOf(tipo as typeof t.hero.types[number]);
+      if (idx > 0 && typeSlugs[idx - 1]) params.set("tipo", typeSlugs[idx - 1]);
+    }
+    const isAllZones = zona === "" || zona === t.hero.zones[0];
+    if (!isAllZones) {
+      const zoneSlugs = ["tulum", "playa-del-carmen", "akumal", "coba", "puerto-morelos"];
+      const idx = t.hero.zones.indexOf(zona as typeof t.hero.zones[number]);
+      if (idx > 0 && zoneSlugs[idx - 1]) params.set("zona", zoneSlugs[idx - 1]);
+    }
     if (query) params.set("q", query);
     window.location.href = `/propiedades?${params.toString()}`;
   };
@@ -42,20 +56,20 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-28 pb-20">
         {/* Eyebrow */}
         <p className="text-white/70 text-xs font-medium tracking-[0.25em] uppercase mb-5 animate-in fade-in duration-700">
-          Riviera Maya · México
+          {t.hero.eyebrow}
         </p>
 
         {/* Headline */}
         <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
-          Tu propiedad ideal<br />
-          <span className="text-white/90 italic">en el Caribe Mexicano</span>
+          {t.hero.title}<br />
+          <span className="text-white/90 italic">{t.hero.titleItalic}</span>
         </h1>
 
         {/* Tagline */}
         <p className="text-white/75 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed animate-in fade-in duration-700 delay-200">
-          Casas, villas, departamentos y terrenos en Tulum, Playa del Carmen y toda la Riviera Maya.
+          {t.hero.tagline}
           <br className="hidden sm:block" />
-          <span className="italic font-medium text-white/90"> Real Estate with Soul.</span>
+          <span className="italic font-medium text-white/90"> {t.hero.taglineItalic}</span>
         </p>
 
         {/* Search bar */}
@@ -88,7 +102,7 @@ export default function Hero() {
               {/* Tipo */}
               <div className="relative">
                 <label className="block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-1.5 px-1">
-                  Tipo
+                  {t.hero.typeLabel}
                 </label>
                 <div className="relative">
                   <select
@@ -107,7 +121,7 @@ export default function Hero() {
               {/* Zona */}
               <div className="relative">
                 <label className="block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-1.5 px-1">
-                  Zona
+                  {t.hero.zoneLabel}
                 </label>
                 <div className="relative">
                   <select
@@ -126,13 +140,13 @@ export default function Hero() {
               {/* Búsqueda libre */}
               <div className="lg:col-span-1">
                 <label className="block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-1.5 px-1">
-                  Buscar
+                  {t.hero.searchLabel}
                 </label>
                 <input
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Ej: alberca, frente al mar..."
+                  placeholder={t.hero.searchPlaceholder}
                   className="w-full bg-muted border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-blue/30 transition-all"
                 />
               </div>
@@ -145,7 +159,7 @@ export default function Hero() {
                   className="w-full flex items-center justify-center gap-2 bg-navy text-white py-3 px-6 rounded-xl text-sm font-semibold hover:bg-navy-light transition-colors duration-200"
                 >
                   <Search className="w-4 h-4" />
-                  Buscar propiedades
+                  {t.hero.searchBtn}
                 </button>
               </div>
             </div>
@@ -155,9 +169,9 @@ export default function Hero() {
         {/* Stats rápidos debajo del search */}
         <div className="flex items-center justify-center gap-8 mt-10 animate-in fade-in duration-700 delay-500">
           {[
-            { end: 72, suffix: "+", label: "Propiedades activas" },
-            { end: 20, suffix: "+", label: "Años de experiencia" },
-            { end: 500, suffix: "+", label: "Clientes atendidos" },
+            { end: 72, suffix: "+", label: t.hero.activeProperties },
+            { end: 20, suffix: "+", label: t.hero.experience },
+            { end: 500, suffix: "+", label: t.hero.clients },
           ].map((stat) => (
             <div key={stat.label} className="text-center">
               <p className="text-2xl font-heading font-bold text-white">
@@ -171,7 +185,7 @@ export default function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 animate-bounce">
-        <span className="text-white/50 text-xs tracking-widest uppercase">Explorar</span>
+        <span className="text-white/50 text-xs tracking-widest uppercase">{t.hero.explore}</span>
         <ChevronDown className="w-4 h-4 text-white/50" />
       </div>
     </section>

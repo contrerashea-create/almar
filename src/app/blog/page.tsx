@@ -1,12 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { Clock, ArrowRight } from "lucide-react";
 import { blogPosts } from "@/lib/mock-data";
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Blog",
-  description: "Mercado inmobiliario, consejos de inversión, destinos y lifestyle en la Riviera Maya.",
-};
+import { useLang } from "@/contexts/lang-context";
 
 const categoryColors: Record<string, string> = {
   mercado: "bg-blue/10 text-blue",
@@ -16,12 +13,8 @@ const categoryColors: Record<string, string> = {
   lifestyle: "bg-pink-50 text-pink-700",
 };
 
-const categoryLabels: Record<string, string> = {
-  mercado: "Mercado", consejos: "Consejos", noticias: "Noticias",
-  destinos: "Destinos", lifestyle: "Lifestyle",
-};
-
 export default function BlogPage() {
+  const { t, lang } = useLang();
   const posts = blogPosts.filter((p) => p.published);
   const featured = posts[0];
   const rest = posts.slice(1);
@@ -31,12 +24,12 @@ export default function BlogPage() {
       {/* Header */}
       <section className="py-20 bg-navy">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <p className="text-blue text-xs font-semibold tracking-[0.2em] uppercase mb-3">Blog Almar</p>
+          <p className="text-blue text-xs font-semibold tracking-[0.2em] uppercase mb-3">{t.blog.eyebrow}</p>
           <h1 className="font-heading text-4xl sm:text-5xl font-bold text-white mb-4">
-            Todo sobre la Riviera Maya
+            {t.blog.title}
           </h1>
           <p className="text-white/65 text-lg max-w-xl leading-relaxed">
-            Mercado inmobiliario, consejos de inversión, destinos y lifestyle en el Caribe Mexicano.
+            {t.blog.subtitle}
           </p>
         </div>
       </section>
@@ -60,10 +53,10 @@ export default function BlogPage() {
                 <div className="p-8 sm:p-10 flex flex-col justify-center">
                   <div className="flex items-center gap-3 mb-4">
                     <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full ${categoryColors[featured.category]}`}>
-                      {categoryLabels[featured.category]}
+                      {(t.blog.categories as Record<string, string>)[featured.category] ?? featured.category}
                     </span>
                     <span className="text-xs text-muted-foreground flex items-center gap-1">
-                      <Clock className="w-3 h-3" /> {featured.readingTime} min de lectura
+                      <Clock className="w-3 h-3" /> {featured.readingTime} {t.blog.minRead}
                     </span>
                   </div>
                   <h2 className="font-heading text-2xl sm:text-3xl font-bold text-navy leading-tight mb-3 group-hover:text-blue transition-colors">
@@ -76,12 +69,12 @@ export default function BlogPage() {
                       <div>
                         <p className="text-sm font-medium text-foreground">{featured.author}</p>
                         <p className="text-xs text-muted-foreground">
-                          {new Date(featured.publishedAt).toLocaleDateString("es-MX", { year: "numeric", month: "long", day: "numeric" })}
+                          {new Date(featured.publishedAt).toLocaleDateString(lang === "es" ? "es-MX" : "en-US", { year: "numeric", month: "long", day: "numeric" })}
                         </p>
                       </div>
                     </div>
                     <span className="flex items-center gap-1 text-blue text-sm font-semibold">
-                      Leer <ArrowRight className="w-4 h-4" />
+                      {t.blog.read} <ArrowRight className="w-4 h-4" />
                     </span>
                   </div>
                 </div>
@@ -107,7 +100,7 @@ export default function BlogPage() {
                 <div className="flex flex-col flex-1 p-5">
                   <div className="flex items-center gap-3 mb-3">
                     <span className={`text-[10px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full ${categoryColors[post.category]}`}>
-                      {categoryLabels[post.category]}
+                      {(t.blog.categories as Record<string, string>)[post.category] ?? post.category}
                     </span>
                     <span className="text-xs text-muted-foreground flex items-center gap-1">
                       <Clock className="w-3 h-3" /> {post.readingTime} min
@@ -122,10 +115,10 @@ export default function BlogPage() {
                     <div className="flex-1">
                       <p className="text-xs font-medium text-foreground">{post.author}</p>
                       <p className="text-[10px] text-muted-foreground">
-                        {new Date(post.publishedAt).toLocaleDateString("es-MX", { month: "short", day: "numeric", year: "numeric" })}
+                        {new Date(post.publishedAt).toLocaleDateString(lang === "es" ? "es-MX" : "en-US", { month: "short", day: "numeric", year: "numeric" })}
                       </p>
                     </div>
-                    <span className="text-blue text-xs font-semibold">Leer →</span>
+                    <span className="text-blue text-xs font-semibold">{t.blog.read} →</span>
                   </div>
                 </div>
               </Link>

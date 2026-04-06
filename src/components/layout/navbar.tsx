@@ -7,26 +7,28 @@ import { Menu, X, ChevronDown, UserCircle, Heart, MessageCircle } from "lucide-r
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/hooks/use-favorites";
 import AlmarLogo from "@/components/ui/almar-logo";
-
-const navLinks = [
-  { label: "Propiedades", href: "/propiedades" },
-  {
-    label: "Nosotros",
-    href: "/nosotros",
-    children: [
-      { label: "Quiénes somos", href: "/nosotros" },
-      { label: "Nuestro equipo", href: "/nosotros#equipo" },
-      { label: "Servicios", href: "/servicios" },
-    ],
-  },
-  { label: "Blog", href: "/blog" },
-  { label: "Afiliados", href: "/afiliados" },
-  { label: "Contacto", href: "/contacto" },
-];
+import { useLang } from "@/contexts/lang-context";
 
 export default function Navbar() {
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const { lang, setLang, t } = useLang();
+
+  const navLinks = [
+    { label: t.nav.properties, href: "/propiedades" },
+    {
+      label: t.nav.about,
+      href: "/nosotros",
+      children: [
+        { label: t.nav.whoWeAre, href: "/nosotros" },
+        { label: t.nav.ourTeam, href: "/nosotros#equipo" },
+        { label: t.nav.services, href: "/servicios" },
+      ],
+    },
+    { label: t.nav.blog, href: "/blog" },
+    { label: t.nav.affiliates, href: "/afiliados" },
+    { label: t.nav.contact, href: "/contacto" },
+  ];
 
   const [isOpen, setIsOpen] = useState(false);
   const [openSection, setOpenSection] = useState<string | null>(null);
@@ -112,18 +114,21 @@ export default function Navbar() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-3">
-              <div className={cn(
-                "flex items-center text-xs font-medium gap-1.5 rounded-full px-3 py-1.5 border transition-all duration-200 cursor-pointer select-none",
-                scrolled
-                  ? "border-border text-muted-foreground hover:text-foreground hover:border-navy/40"
-                  : "border-white/30 text-white/70 hover:text-white hover:border-white/60"
-              )}>
-                <span className={scrolled ? "font-semibold text-navy" : "font-semibold text-white"}>ES</span>
+              <button
+                onClick={() => setLang(lang === "es" ? "en" : "es")}
+                className={cn(
+                  "flex items-center text-xs font-medium gap-1.5 rounded-full px-3 py-1.5 border transition-all duration-200 cursor-pointer select-none",
+                  scrolled
+                    ? "border-border text-muted-foreground hover:text-foreground hover:border-navy/40"
+                    : "border-white/30 text-white/70 hover:text-white hover:border-white/60"
+                )}
+              >
+                <span className={cn(lang === "es" ? (scrolled ? "font-semibold text-navy" : "font-semibold text-white") : "")}>ES</span>
                 <span className={scrolled ? "text-border" : "text-white/30"}>|</span>
-                <span>EN</span>
-              </div>
+                <span className={cn(lang === "en" ? (scrolled ? "font-semibold text-navy" : "font-semibold text-white") : "")}>EN</span>
+              </button>
 
-              <Link href="/favoritos" title="Mis favoritos"
+              <Link href="/favoritos" title={t.nav.favorites}
                 className={cn(
                   "relative w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200",
                   scrolled ? "text-navy/60 hover:text-navy hover:bg-muted" : "text-white/60 hover:text-white hover:bg-white/10"
@@ -136,7 +141,7 @@ export default function Navbar() {
                 )}
               </Link>
 
-              <Link href="/admin" title="Iniciar sesión"
+              <Link href="/admin" title={t.nav.login}
                 className={cn(
                   "w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200",
                   scrolled ? "text-navy/60 hover:text-navy hover:bg-muted" : "text-white/60 hover:text-white hover:bg-white/10"
@@ -164,7 +169,7 @@ export default function Navbar() {
                   "w-9 h-9 rounded-full flex items-center justify-center transition-colors",
                   scrolled ? "text-navy hover:bg-muted" : "text-white hover:bg-white/10"
                 )}
-                aria-label="Abrir menú"
+                aria-label={t.nav.openMenu}
               >
                 <Menu className="w-5 h-5" />
               </button>
@@ -238,7 +243,7 @@ export default function Navbar() {
           <Link href="/favoritos" onClick={close}
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-muted transition-colors text-sm font-medium text-navy/70 hover:text-navy">
             <Heart className="w-4 h-4 shrink-0" />
-            Mis favoritos
+            {t.nav.favorites}
             {favorites.length > 0 && (
               <span className="ml-auto px-1.5 py-0.5 bg-red-500 text-white text-[10px] font-bold rounded-full">
                 {favorites.length}
@@ -248,12 +253,12 @@ export default function Navbar() {
           <a href="https://wa.me/529843121828" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-muted transition-colors text-sm font-medium text-navy/70 hover:text-navy">
             <MessageCircle className="w-4 h-4 shrink-0" />
-            WhatsApp
+            {t.nav.whatsapp}
           </a>
           <Link href="/admin" onClick={close}
             className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-muted transition-colors text-sm font-medium text-navy/70 hover:text-navy">
             <UserCircle className="w-4 h-4 shrink-0" />
-            Iniciar sesión
+            {t.nav.login}
           </Link>
         </div>
       </div>

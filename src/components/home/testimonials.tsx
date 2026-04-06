@@ -1,18 +1,22 @@
+"use client";
+
 import { Quote } from "lucide-react";
 import { testimonials } from "@/lib/mock-data";
 import FadeIn, { StaggerContainer, StaggerItem } from "@/components/ui/fade-in";
+import { useLang } from "@/contexts/lang-context";
 
 export default function Testimonials() {
+  const { t } = useLang();
   return (
     <section className="py-20 lg:py-28 bg-secondary/40">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <FadeIn className="text-center mb-14">
           <p className="text-blue text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-            Lo que dicen nuestros clientes
+            {t.testimonials.eyebrow}
           </p>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-navy">
-            Historias de éxito
+            {t.testimonials.title}
           </h2>
         </FadeIn>
 

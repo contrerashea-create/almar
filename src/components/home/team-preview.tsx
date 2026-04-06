@@ -1,9 +1,13 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { agents } from "@/lib/mock-data";
 import FadeIn, { StaggerContainer, StaggerItem } from "@/components/ui/fade-in";
+import { useLang } from "@/contexts/lang-context";
 
 export default function TeamPreview() {
+  const { t } = useLang();
   return (
     <section className="py-20 lg:py-28 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -11,21 +15,20 @@ export default function TeamPreview() {
         <FadeIn className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
           <div>
             <p className="text-blue text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-              Nuestro equipo
+              {t.team.eyebrow}
             </p>
             <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-navy leading-tight">
-              Personas detrás del nombre
+              {t.team.title}
             </h2>
             <p className="text-muted-foreground mt-3 max-w-lg text-base leading-relaxed">
-              Especialistas en el mercado inmobiliario del Caribe Mexicano con más de una década
-              de operaciones en la región.
+              {t.team.subtitle}
             </p>
           </div>
           <Link
             href="/nosotros#equipo"
             className="flex items-center gap-2 text-sm font-semibold text-navy border border-navy rounded-full px-5 py-2.5 hover:bg-navy hover:text-white transition-all duration-200 shrink-0 self-start sm:self-auto"
           >
-            Conocer equipo
+            {t.team.meetTeam}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </FadeIn>
@@ -51,11 +54,11 @@ export default function TeamPreview() {
                   <div className="flex gap-4">
                     <div className="text-center">
                       <p className="text-white font-heading font-bold text-lg">{agent.propertiesCount}</p>
-                      <p className="text-white/70 text-xs">Activas</p>
+                      <p className="text-white/70 text-xs">{t.team.active}</p>
                     </div>
                     <div className="text-center">
                       <p className="text-white font-heading font-bold text-lg">{agent.closedDeals}</p>
-                      <p className="text-white/70 text-xs">Cierres</p>
+                      <p className="text-white/70 text-xs">{t.team.closed}</p>
                     </div>
                   </div>
                 </div>
@@ -79,7 +82,7 @@ export default function TeamPreview() {
                   className="flex items-center gap-2 text-sm font-semibold text-navy hover:text-blue transition-colors"
                 >
                   <Phone className="w-3.5 h-3.5" />
-                  Contactar
+                  {t.team.contact}
                 </a>
               </div>
             </div>

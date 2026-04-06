@@ -1,33 +1,38 @@
+"use client";
+
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 import NewsletterForm from "./newsletter-form";
 import AlmarLogo from "@/components/ui/almar-logo";
-
-const propertyLinks = [
-  { label: "Casas en Tulum", href: "/propiedades?tipo=casa&zona=tulum" },
-  { label: "Departamentos en Playa del Carmen", href: "/propiedades?tipo=departamento&zona=playa-del-carmen" },
-  { label: "Villas y Penthouses", href: "/propiedades?tipo=villa" },
-  { label: "Terrenos", href: "/propiedades?tipo=terreno" },
-  { label: "Propiedades en renta", href: "/propiedades?operacion=renta" },
-  { label: "Propiedades destacadas", href: "/propiedades?destacadas=true" },
-];
-
-const companyLinks = [
-  { label: "Quiénes somos", href: "/nosotros" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Nuestro equipo", href: "/nosotros#equipo" },
-  { label: "Blog", href: "/blog" },
-  { label: "Programa de afiliados", href: "/afiliados" },
-  { label: "Contacto", href: "/contacto" },
-];
-
-const legalLinks = [
-  { label: "Política de privacidad", href: "/privacidad" },
-  { label: "Términos y condiciones", href: "/terminos" },
-  { label: "Accesibilidad", href: "/accesibilidad" },
-];
+import { useLang } from "@/contexts/lang-context";
 
 export default function Footer() {
+  const { t } = useLang();
+
+  const propertyLinks = [
+    { label: t.footer.propLinks.casasTulum, href: "/propiedades?tipo=casa&zona=tulum" },
+    { label: t.footer.propLinks.deptosPlaya, href: "/propiedades?tipo=departamento&zona=playa-del-carmen" },
+    { label: t.footer.propLinks.villasAndPenthouses, href: "/propiedades?tipo=villa" },
+    { label: t.footer.propLinks.terrenos, href: "/propiedades?tipo=terreno" },
+    { label: t.footer.propLinks.renta, href: "/propiedades?operacion=renta" },
+    { label: t.footer.propLinks.destacadas, href: "/propiedades?destacadas=true" },
+  ];
+
+  const companyLinks = [
+    { label: t.footer.companyLinks.whoWeAre, href: "/nosotros" },
+    { label: t.footer.companyLinks.services, href: "/servicios" },
+    { label: t.footer.companyLinks.ourTeam, href: "/nosotros#equipo" },
+    { label: t.footer.companyLinks.blog, href: "/blog" },
+    { label: t.footer.companyLinks.affiliates, href: "/afiliados" },
+    { label: t.footer.companyLinks.contact, href: "/contacto" },
+  ];
+
+  const legalLinks = [
+    { label: t.footer.privacy, href: "/privacidad" },
+    { label: t.footer.terms, href: "/terminos" },
+    { label: t.footer.accessibility, href: "/accesibilidad" },
+  ];
+
   return (
     <footer className="bg-brand text-brand-foreground">
       {/* CTA strip */}
@@ -36,10 +41,10 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div>
               <p className="text-gold text-sm font-medium tracking-widest uppercase mb-1">
-                ¿Tienes una propiedad en mente?
+                {t.footer.cta}
               </p>
               <h2 className="font-heading text-2xl lg:text-3xl font-semibold text-white">
-                Hablemos hoy mismo
+                {t.footer.ctaTitle}
               </h2>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
@@ -49,13 +54,13 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 className="px-6 py-3 bg-gold text-gold-foreground text-sm font-semibold rounded-full hover:bg-gold/90 transition-colors text-center"
               >
-                WhatsApp directo
+                {t.footer.whatsappDirect}
               </a>
               <Link
                 href="/contacto"
                 className="px-6 py-3 border border-white/30 text-white text-sm font-semibold rounded-full hover:bg-white/10 transition-colors text-center"
               >
-                Formulario de contacto
+                {t.footer.contactForm}
               </Link>
             </div>
           </div>
@@ -71,8 +76,7 @@ export default function Footer() {
               <AlmarLogo variant="full" theme="light" />
             </div>
             <p className="text-white/70 text-sm leading-relaxed mb-6">
-              Inmobiliaria boutique especializada en propiedades residenciales y de inversión en
-              la Riviera Maya, Monterrey y Los Cabos. Más de 20 años de historia.
+              {t.footer.tagline}
             </p>
             <div className="space-y-3 text-sm">
               <a
@@ -115,7 +119,7 @@ export default function Footer() {
           {/* Properties */}
           <div>
             <h3 className="text-white font-semibold text-sm tracking-widest uppercase mb-5">
-              Propiedades
+              {t.footer.properties}
             </h3>
             <ul className="space-y-3">
               {propertyLinks.map((link) => (
@@ -134,7 +138,7 @@ export default function Footer() {
           {/* Company */}
           <div>
             <h3 className="text-white font-semibold text-sm tracking-widest uppercase mb-5">
-              Empresa
+              {t.footer.company}
             </h3>
             <ul className="space-y-3">
               {companyLinks.map((link) => (
@@ -153,10 +157,10 @@ export default function Footer() {
           {/* Newsletter */}
           <div>
             <h3 className="text-white font-semibold text-sm tracking-widest uppercase mb-5">
-              Mantente informado
+              {t.footer.stayInformed}
             </h3>
             <p className="text-white/65 text-sm leading-relaxed mb-4">
-              Oportunidades de inversión, análisis de mercado y propiedades nuevas, directo a tu correo.
+              {t.footer.newsletterDesc}
             </p>
             <NewsletterForm />
           </div>
@@ -167,7 +171,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/50">
-            <p>© {new Date().getFullYear()} Almar Inmobiliaria. Todos los derechos reservados.</p>
+            <p>© {new Date().getFullYear()} Almar Inmobiliaria. {t.footer.rights}</p>
             <div className="flex items-center gap-4">
               {legalLinks.map((link) => (
                 <Link

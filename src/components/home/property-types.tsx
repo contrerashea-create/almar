@@ -1,56 +1,31 @@
+"use client";
+
 import Link from "next/link";
 import FadeIn, { StaggerContainer, StaggerItem } from "@/components/ui/fade-in";
+import { useLang } from "@/contexts/lang-context";
 
-const types = [
-  {
-    label: "Casas",
-    slug: "casa",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop",
-    count: 24,
-  },
-  {
-    label: "Departamentos",
-    slug: "departamento",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop",
-    count: 18,
-  },
-  {
-    label: "Villas",
-    slug: "villa",
-    image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=400&fit=crop",
-    count: 9,
-  },
-  {
-    label: "Penthouses",
-    slug: "penthouse",
-    image: "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=600&h=400&fit=crop",
-    count: 6,
-  },
-  {
-    label: "Terrenos",
-    slug: "terreno",
-    image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop",
-    count: 11,
-  },
-  {
-    label: "Comercial",
-    slug: "local",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-    count: 5,
-  },
+const typeData = [
+  { slug: "casa", image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&h=400&fit=crop", count: 24 },
+  { slug: "departamento", image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&h=400&fit=crop", count: 18 },
+  { slug: "villa", image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=600&h=400&fit=crop", count: 9 },
+  { slug: "penthouse", image: "https://images.unsplash.com/photo-1567496898669-ee935f5f647a?w=600&h=400&fit=crop", count: 6 },
+  { slug: "terreno", image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&h=400&fit=crop", count: 11 },
+  { slug: "local", image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop", count: 5 },
 ];
 
 export default function PropertyTypes() {
+  const { t } = useLang();
+  const types = typeData.map((d, i) => ({ ...d, label: t.propertyTypes.types[i] }));
   return (
     <section className="py-20 lg:py-28 bg-secondary/40">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <FadeIn className="text-center mb-12">
           <p className="text-blue text-xs font-semibold tracking-[0.2em] uppercase mb-3">
-            Explora por categoría
+            {t.propertyTypes.eyebrow}
           </p>
           <h2 className="font-heading text-3xl sm:text-4xl font-bold text-navy">
-            Encuentra tu tipo ideal
+            {t.propertyTypes.title}
           </h2>
         </FadeIn>
 
@@ -76,7 +51,7 @@ export default function PropertyTypes() {
                     {type.label}
                   </p>
                   <p className="text-white/60 text-xs mt-0.5">
-                    {type.count} propiedades
+                    {type.count} {t.propertyTypes.properties}
                   </p>
                 </div>
 

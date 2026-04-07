@@ -4,13 +4,15 @@ import { usePathname } from "next/navigation";
 import Navbar from "./navbar";
 import Footer from "./footer";
 import WhatsAppButton from "./whatsapp-button";
+import HeaButton from "./hea-button";
 import { LangProvider } from "@/contexts/lang-context";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const isAdmin = pathname.startsWith("/admin");
+  const isPropuesta = pathname.startsWith("/propuesta");
 
-  if (isAdmin) return <>{children}</>;
+  if (isAdmin || isPropuesta) return <>{children}</>;
 
   return (
     <LangProvider>
@@ -18,6 +20,8 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
       <main className="flex-1">{children}</main>
       <Footer />
       <WhatsAppButton />
+      <HeaButton />
     </LangProvider>
   );
+
 }

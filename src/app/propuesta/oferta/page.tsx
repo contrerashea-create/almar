@@ -265,27 +265,3 @@ export default function OfertaPage() {
     </div>
   );
 }
-
-      </div>
-    </div>
-  );
-}
-         style={{ background: "#3069aa" }}
-          >
-            Ver showcase
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        <p className="mt-12 text-center text-[11px] text-white/15">
-          HEA Consulting · consulting.hea@gmail.com · www.consultinghea.com · Febrero 2026
-        </p>
-      </div>
-    </div>
-  );
-}
-
-      </div>
-    </div>
-  );
-}

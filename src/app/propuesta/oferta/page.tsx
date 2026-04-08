@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { ArrowLeft, Check, ArrowRight, Mail } from "lucide-react";
+import { ArrowLeft, Check, ArrowRight, Mail, TrendingUp, ShieldCheck } from "lucide-react";
 
 export const metadata = {
-  title: "Propuesta — Grupo Almar",
+  title: "Propuesta | Grupo Almar",
   robots: "noindex, nofollow",
 };
 
@@ -40,7 +40,7 @@ const modulos = [
 ];
 
 const entregables = [
-  "Sitio web público — 8 páginas completas",
+  "Sitio web público: 8 páginas completas",
   "Panel de administración exclusivo para Almar",
   "Gestión de propiedades con fichas PDF",
   "Dashboard de analíticos integrado",
@@ -57,24 +57,21 @@ const entregables = [
   "Página de afiliados y programa de referidos",
 ];
 
-const roadmap = [
-  { semana: "Semana 1", hito: "Kickoff, infraestructura, marca, dominio y estructura base" },
-  { semana: "Semana 2", hito: "Panel de administración: propiedades, blog y configuración" },
-  { semana: "Semana 3", hito: "Sitio web público: todas las páginas + integración + bilingüe" },
-  { semana: "Semana 4", hito: "Pruebas, carga inicial, capacitación y entrega en producción" },
-];
-
 const pasos = [
   "Confirmación de aceptación de la propuesta",
   "Firma de Contrato de Prestación de Servicios (mín. 6 meses)",
   "Firma del Acuerdo de Confidencialidad (NDA)",
-  "Confirmación del Pago 1 — inicio formal del proyecto",
+  "Confirmación del Pago 1: inicio formal del proyecto",
   "Reunión de Kickoff para alinear objetivos y marca",
 ];
 
 export default function OfertaPage() {
   return (
     <div className="min-h-screen text-white" style={{ background: "#0c0a09", fontFamily: "Montserrat, sans-serif" }}>
+
+      {/* Ambient glow */}
+      <div className="pointer-events-none fixed top-0 left-1/2 -translate-x-1/2 h-[600px] w-[600px] rounded-full opacity-10"
+        style={{ background: "radial-gradient(circle, #3b82f6, transparent)", filter: "blur(100px)" }} />
 
       {/* Nav */}
       <div className="sticky top-0 z-10 border-b backdrop-blur-sm" style={{ borderColor: "rgba(255,255,255,0.06)", background: "rgba(12,10,9,0.95)" }}>
@@ -87,8 +84,12 @@ export default function OfertaPage() {
           </Link>
           <a href="https://consultinghea.com" target="_blank" rel="noopener noreferrer"
             className="flex items-center gap-2 group">
-            <span className="flex h-6 w-6 items-center justify-center rounded text-[8px] font-bold text-white"
-              style={{ background: "#3b82f6" }}>HEA</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="https://consultinghea.com/images/LOGO.png"
+              alt="HEA Consulting"
+              style={{ height: "26px", width: "26px", borderRadius: "6px", background: "white", padding: "2px", objectFit: "contain" }}
+            />
             <span className="text-xs font-semibold transition-colors" style={{ color: "rgba(255,255,255,0.35)" }}>
               HEA Consulting
             </span>
@@ -96,7 +97,7 @@ export default function OfertaPage() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-2xl px-6 py-20">
+      <div className="relative mx-auto max-w-2xl px-6 py-20">
 
         {/* Header */}
         <div className="mb-16">
@@ -118,7 +119,7 @@ export default function OfertaPage() {
             Almar opera con herramientas que no se hablan entre sí. Los leads no se conectan al seguimiento,
             las propiedades no se sincronizan en tiempo real, y la presencia digital no refleja el nivel de la marca.
             Esta propuesta resuelve todo con{" "}
-            <span className="text-white font-medium">un solo sistema integrado</span> — sitio web, panel de administración,
+            <span className="text-white font-medium">un solo sistema integrado</span>: sitio web, panel de administración,
             analíticos, blog y control de acceso funcionando como uno.
           </p>
           <p className="mt-4 text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
@@ -227,9 +228,9 @@ export default function OfertaPage() {
           <p className="mb-4 text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>Forma de pago</p>
           <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)" }}>
             {[
-              { label: "Pago 1 — Al firmar", sub: "50% del setup", amount: "$10,000 MXN", iva: "$11,600 con IVA" },
-              { label: "Pago 2 — A la entrega", sub: "50% del setup", amount: "$10,000 MXN", iva: "$11,600 con IVA" },
-              { label: "Mensual — desde la entrega", sub: "Operación de la plataforma", amount: "$3,500 MXN", iva: "$4,060 con IVA" },
+              { label: "Pago 1: Al firmar", sub: "50% del setup", amount: "$10,000 MXN", iva: "$11,600 con IVA" },
+              { label: "Pago 2: A la entrega", sub: "50% del setup", amount: "$10,000 MXN", iva: "$11,600 con IVA" },
+              { label: "Mensual: desde la entrega", sub: "Operación de la plataforma", amount: "$3,500 MXN", iva: "$4,060 con IVA" },
             ].map((p, i, arr) => (
               <div key={i} className="flex items-center justify-between px-5 py-4"
                 style={{ borderBottom: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none", background: "rgba(255,255,255,0.02)" }}>
@@ -266,17 +267,117 @@ export default function OfertaPage() {
 
         <div className="h-px mb-16" style={{ background: "rgba(255,255,255,0.06)" }} />
 
-        {/* Cronograma */}
+        {/* Retorno de Inversión */}
         <section className="mb-16">
-          <p className="mb-6 text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>Cronograma · 4 semanas</p>
-          <div className="space-y-4">
-            {roadmap.map((item, i) => (
-              <div key={i} className="flex gap-6 items-start">
-                <span className="w-20 shrink-0 text-xs pt-0.5" style={{ color: "rgba(255,255,255,0.25)" }}>{item.semana}</span>
-                <div className="flex items-start gap-3">
-                  <div className="mt-2 h-1.5 w-1.5 rounded-full shrink-0" style={{ background: "#3b82f6" }} />
-                  <span className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>{item.hito}</span>
+          <div className="flex items-center gap-3 mb-6">
+            <TrendingUp className="h-4 w-4" style={{ color: "#34d399" }} />
+            <p className="text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>Retorno de inversión</p>
+          </div>
+
+          <h2 className="text-2xl font-light text-white mb-4 leading-snug">
+            Un solo proyecto exitoso<br />
+            <span style={{ color: "rgba(255,255,255,0.3)" }}>cubre la inversión completa.</span>
+          </h2>
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+            En el mercado inmobiliario de la Riviera Maya, una sola venta genera una comisión que supera con creces el costo de toda la plataforma. La pregunta no es si vale la pena invertir, es cuántos leads se están perdiendo sin ella.
+          </p>
+
+          {/* ROI cards */}
+          <div className="grid gap-3 sm:grid-cols-3 mb-6">
+            {[
+              {
+                label: "Inversión total año 1",
+                value: "$41,000",
+                sub: "Setup + 6 meses de operación",
+                color: "rgba(255,255,255,0.06)",
+                border: "rgba(255,255,255,0.08)",
+                textColor: "text-white",
+              },
+              {
+                label: "Comisión por 1 venta",
+                value: "$105,000+",
+                sub: "3% sobre propiedad de $3.5M MXN",
+                color: "rgba(52,211,153,0.06)",
+                border: "rgba(52,211,153,0.2)",
+                textColor: "text-white",
+              },
+              {
+                label: "Retorno",
+                value: "2.5×",
+                sub: "Con un solo cierre",
+                color: "rgba(52,211,153,0.08)",
+                border: "rgba(52,211,153,0.3)",
+                textColor: "text-white",
+              },
+            ].map((card) => (
+              <div key={card.label} className="rounded-xl p-5 text-center"
+                style={{ background: card.color, border: `1px solid ${card.border}` }}>
+                <p className="text-[10px] uppercase tracking-wider mb-2" style={{ color: "rgba(255,255,255,0.3)" }}>{card.label}</p>
+                <p className="text-2xl font-light text-white mb-1">{card.value}</p>
+                <p className="text-[10px] leading-relaxed" style={{ color: "rgba(255,255,255,0.35)" }}>{card.sub}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-xl p-5" style={{ background: "rgba(52,211,153,0.04)", border: "1px solid rgba(52,211,153,0.12)" }}>
+            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.55)" }}>
+              La plataforma no es un gasto, es un activo que trabaja 24/7: atrae visitantes, convierte leads y presenta cada propiedad al nivel que merece la marca Almar.{" "}
+              <span className="text-white font-medium">Con un proyecto que cierre gracias al sitio, la plataforma se paga sola por años.</span>
+            </p>
+          </div>
+        </section>
+
+        <div className="h-px mb-16" style={{ background: "rgba(255,255,255,0.06)" }} />
+
+        {/* Estándares y seguridad */}
+        <section className="mb-16">
+          <div className="flex items-center gap-3 mb-6">
+            <ShieldCheck className="h-4 w-4" style={{ color: "#3b82f6" }} />
+            <p className="text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>Estándares y seguridad</p>
+          </div>
+
+          <h2 className="text-2xl font-light text-white mb-4 leading-snug">
+            Construido sobre estándares<br />
+            <span style={{ color: "rgba(255,255,255,0.3)" }}>de calidad e industria.</span>
+          </h2>
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.5)" }}>
+            Cada plataforma que entregamos cumple con buenas prácticas de seguridad, privacidad de datos y disponibilidad. No solo construimos, construimos bien.
+          </p>
+
+          <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.45)" }}>
+            HEA Consulting opera bajo estándares internacionales de calidad y seguridad de la información. Nuestros procesos de desarrollo están alineados con las normas{" "}
+            <span className="text-white font-medium">ISO 9001</span>,{" "}
+            <span className="text-white font-medium">ISO/IEC 27001</span> y los principios del marco{" "}
+            <span className="text-white font-medium">SOC 2</span>, garantizando que cada proyecto se ejecute con metodologías probadas, control de calidad riguroso y protección total de la información de nuestros clientes.{" "}
+            Tu plataforma y tus datos están respaldados por los mismos estándares que utilizan las empresas tecnológicas de clase mundial.
+          </p>
+
+          <div className="grid gap-3 sm:grid-cols-3">
+            {[
+              {
+                code: "ISO 9001",
+                title: "Gestión de Calidad",
+                desc: "Procesos de desarrollo estructurados, revisados y mejorados continuamente para garantizar entregas de alto nivel.",
+              },
+              {
+                code: "ISO/IEC 27001",
+                title: "Seguridad de la Información",
+                desc: "Protección y confidencialidad de los datos de tu empresa y de tus clientes en cada capa del sistema.",
+              },
+              {
+                code: "SOC 2",
+                title: "Seguridad · Disponibilidad · Confidencialidad",
+                desc: "Controles operativos alineados al marco de confianza de servicios para plataformas digitales.",
+              },
+            ].map((cert) => (
+              <div key={cert.code} className="rounded-xl p-5"
+                style={{ background: "rgba(59,130,246,0.04)", border: "1px solid rgba(59,130,246,0.15)" }}>
+                <div className="mb-3 inline-flex items-center rounded-md px-2.5 py-1"
+                  style={{ background: "rgba(59,130,246,0.12)", border: "1px solid rgba(59,130,246,0.25)" }}>
+                  <span className="text-xs font-bold tracking-wide" style={{ color: "#60a5fa" }}>{cert.code}</span>
                 </div>
+                <p className="text-xs font-semibold text-white mb-1.5">{cert.title}</p>
+                <p className="text-[11px] leading-relaxed" style={{ color: "rgba(255,255,255,0.4)" }}>{cert.desc}</p>
               </div>
             ))}
           </div>

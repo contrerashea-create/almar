@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Showcase — Grupo Almar",
+  title: "Showcase | Grupo Almar",
   robots: "noindex, nofollow",
 };
 
@@ -83,8 +83,12 @@ export default function ShowcasePage() {
           <div className="flex items-center gap-3">
             <span className="text-xs hidden sm:block" style={{ color: "rgba(255,255,255,0.2)" }}>Grupo Almar · 2026</span>
             <a href="https://consultinghea.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 group">
-              <span className="flex h-6 w-6 items-center justify-center rounded text-[8px] font-bold text-white"
-                style={{ background: "#3b82f6" }}>HEA</span>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="https://consultinghea.com/images/LOGO.png"
+                alt="HEA Consulting"
+                style={{ height: "26px", width: "26px", borderRadius: "6px", background: "white", padding: "2px", objectFit: "contain" }}
+              />
               <span className="text-xs font-semibold transition-colors" style={{ color: "rgba(255,255,255,0.35)" }}>HEA Consulting</span>
             </a>
           </div>
@@ -103,7 +107,7 @@ export default function ShowcasePage() {
             <span className="block font-light" style={{ color: "rgba(255,255,255,0.25)" }}>Digital Platform</span>
           </h1>
           <p className="mx-auto max-w-xl text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
-            Un ecosistema digital completo para Almar — desde el sitio web que atrae clientes, hasta el panel que administra el negocio.
+            Un ecosistema digital completo para Almar: desde el sitio web que atrae clientes, hasta el panel que administra el negocio.
           </p>
         </div>
 
@@ -169,7 +173,7 @@ export default function ShowcasePage() {
 
         <div className="mb-20 h-px" style={{ background: "rgba(255,255,255,0.06)" }} />
 
-        {/* Roadmap — cronograma */}
+        {/* Roadmap */}
         <section className="mb-20">
           <div className="flex items-center gap-3 mb-3">
             <span className="text-xs px-2.5 py-1 rounded-full font-medium"

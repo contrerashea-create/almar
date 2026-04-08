@@ -22,7 +22,7 @@ export const translations = {
       whatsappDirect: "WhatsApp directo",
       contactForm: "Formulario de contacto",
       tagline:
-        "Inmobiliaria boutique especializada en propiedades residenciales y de inversión en la Riviera Maya, Monterrey y Los Cabos. Más de 20 años de historia.",
+        "Inmobiliaria boutique especializada en propiedades residenciales y de inversión en la Riviera Maya, Monterrey y CDMX. Más de 20 años de historia.",
       properties: "Propiedades",
       company: "Empresa",
       stayInformed: "Mantente informado",
@@ -623,7 +623,7 @@ export const translations = {
       whatsappDirect: "WhatsApp direct",
       contactForm: "Contact form",
       tagline:
-        "Boutique real estate agency specialized in residential and investment properties in the Riviera Maya, Monterrey, and Los Cabos. Over 20 years of history.",
+        "Boutique real estate agency specialized in residential and investment properties in the Riviera Maya, Monterrey, and CDMX. Over 20 years of history.",
       properties: "Properties",
       company: "Company",
       stayInformed: "Stay informed",

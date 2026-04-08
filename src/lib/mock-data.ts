@@ -133,7 +133,7 @@ export const agents: Agent[] = [
     id: "agent-3",
     name: "Sofía Herrera",
     title: "Senior Sales Advisor",
-    bio: "Bilingüe (español-inglés), Sofía atiende a clientes nacionales e internacionales que buscan su propiedad ideal en la Riviera Maya, Cancún y Los Cabos.",
+    bio: "Bilingüe (español-inglés), Sofía atiende a clientes nacionales e internacionales que buscan su propiedad ideal en la Riviera Maya, Monterrey y CDMX.",
     phone: "+52 984 312 1828",
     whatsapp: "529843121828",
     email: "sofia@almarmx.com",

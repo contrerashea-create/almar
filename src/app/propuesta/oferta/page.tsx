@@ -224,6 +224,19 @@ export default function OfertaPage() {
             </div>
           </div>
 
+          {/* CRM add-on total */}
+          <div className="mb-6 rounded-xl px-5 py-4 flex items-center justify-between"
+            style={{ background: "rgba(59,130,246,0.04)", border: "1px solid rgba(59,130,246,0.12)" }}>
+            <div>
+              <p className="text-xs font-medium text-white">Con módulo CRM incluido</p>
+              <p className="text-[11px] mt-0.5" style={{ color: "rgba(255,255,255,0.35)" }}>Setup + CRM opcional ($20,000 + $5,000)</p>
+            </div>
+            <div className="text-right">
+              <p className="text-sm font-medium text-white">$25,000 MXN</p>
+              <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>$29,000 con IVA</p>
+            </div>
+          </div>
+
           {/* Forma de pago */}
           <p className="mb-4 text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>Forma de pago</p>
           <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.07)" }}>
@@ -234,6 +247,28 @@ export default function OfertaPage() {
             ].map((p, i, arr) => (
               <div key={i} className="flex items-center justify-between px-5 py-4"
                 style={{ borderBottom: i < arr.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none", background: "rgba(255,255,255,0.02)" }}>
+                <div>
+                  <p className="text-xs font-medium text-white">{p.label}</p>
+                  <p className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{p.sub}</p>
+                </div>
+                <div className="text-right">
+                  <p className="text-sm text-white">{p.amount}</p>
+                  <p className="text-[10px]" style={{ color: "rgba(255,255,255,0.3)" }}>{p.iva}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Forma de pago con CRM */}
+          <p className="mt-6 mb-4 text-xs uppercase tracking-widest" style={{ color: "rgba(255,255,255,0.3)" }}>Forma de pago con CRM</p>
+          <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(59,130,246,0.15)" }}>
+            {[
+              { label: "Pago 1: Al firmar", sub: "50% del setup con CRM", amount: "$12,500 MXN", iva: "$14,500 con IVA" },
+              { label: "Pago 2: A la entrega", sub: "50% del setup con CRM", amount: "$12,500 MXN", iva: "$14,500 con IVA" },
+              { label: "Mensual: desde la entrega", sub: "Operación de la plataforma", amount: "$3,500 MXN", iva: "$4,060 con IVA" },
+            ].map((p, i, arr) => (
+              <div key={i} className="flex items-center justify-between px-5 py-4"
+                style={{ borderBottom: i < arr.length - 1 ? "1px solid rgba(59,130,246,0.08)" : "none", background: "rgba(59,130,246,0.03)" }}>
                 <div>
                   <p className="text-xs font-medium text-white">{p.label}</p>
                   <p className="text-[10px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>{p.sub}</p>

@@ -60,13 +60,13 @@ export default function Hero() {
         </p>
 
         {/* Headline */}
-        <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
+        <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.08] tracking-tight mb-6 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-100">
           {t.hero.title}<br />
           <span className="text-white/90 italic">{t.hero.titleItalic}</span>
         </h1>
 
         {/* Tagline */}
-        <p className="text-white/75 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed animate-in fade-in duration-700 delay-200">
+        <p className="text-white/75 text-base sm:text-lg sm:text-xl max-w-2xl mx-auto mb-10 sm:mb-12 leading-relaxed animate-in fade-in duration-700 delay-200">
           {t.hero.tagline}
           <br className="hidden sm:block" />
           <span className="italic font-medium text-white/90"> {t.hero.taglineItalic}</span>
@@ -97,8 +97,8 @@ export default function Hero() {
           </div>
 
           {/* Search panel */}
-          <div className="bg-white rounded-b-2xl rounded-tr-2xl shadow-2xl p-4 sm:p-5">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div className="bg-white rounded-b-2xl rounded-tr-2xl shadow-2xl p-3 sm:p-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
               {/* Tipo */}
               <div className="relative">
                 <label className="block text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-1.5 px-1">
@@ -167,7 +167,7 @@ export default function Hero() {
         </form>
 
         {/* Stats rápidos debajo del search */}
-        <div className="flex items-center justify-center gap-8 mt-10 animate-in fade-in duration-700 delay-500">
+        <div className="flex items-center justify-center gap-5 sm:gap-8 mt-8 sm:mt-10 animate-in fade-in duration-700 delay-500">
           {[
             { end: 72, suffix: "+", label: t.hero.activeProperties },
             { end: 20, suffix: "+", label: t.hero.experience },

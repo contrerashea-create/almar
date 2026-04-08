@@ -47,18 +47,18 @@ export default function Footer() {
                 {t.footer.ctaTitle}
               </h2>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <a
                 href="https://wa.me/529843121828"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3 bg-gold text-gold-foreground text-sm font-semibold rounded-full hover:bg-gold/90 transition-colors text-center"
+                className="px-6 py-3 bg-gold text-gold-foreground text-sm font-semibold rounded-full hover:bg-gold/90 transition-colors text-center w-full sm:w-auto"
               >
                 {t.footer.whatsappDirect}
               </a>
               <Link
                 href="/contacto"
-                className="px-6 py-3 border border-white/30 text-white text-sm font-semibold rounded-full hover:bg-white/10 transition-colors text-center"
+                className="px-6 py-3 border border-white/30 text-white text-sm font-semibold rounded-full hover:bg-white/10 transition-colors text-center w-full sm:w-auto"
               >
                 {t.footer.contactForm}
               </Link>
@@ -69,7 +69,7 @@ export default function Footer() {
 
       {/* Main footer */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           {/* Brand column */}
           <div className="lg:col-span-1">
             <div className="mb-5">

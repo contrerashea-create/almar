@@ -30,12 +30,12 @@ export default function PropertyTypes() {
         </FadeIn>
 
         {/* Grid */}
-        <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <StaggerContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
           {types.map((type) => (
             <StaggerItem key={type.slug}>
               <Link
                 href={`/propiedades?tipo=${type.slug}`}
-                className="group relative overflow-hidden rounded-2xl aspect-[3/4] bg-muted block"
+                className="group relative overflow-hidden rounded-2xl aspect-square sm:aspect-[3/4] bg-muted block"
               >
                 <img
                   src={type.image}

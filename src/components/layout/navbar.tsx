@@ -189,7 +189,7 @@ export default function Navbar() {
 
       {/* Drawer — panel flotante bajo el navbar */}
       <div className={cn(
-        "fixed top-[72px] right-4 z-50 w-72 bg-white flex flex-col lg:hidden shadow-xl rounded-2xl border border-border overflow-hidden transition-all duration-200",
+        "fixed top-[72px] right-2 sm:right-4 z-50 w-[calc(100vw-1rem)] max-w-[288px] bg-white flex flex-col lg:hidden shadow-xl rounded-2xl border border-border overflow-hidden transition-all duration-200",
         isOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-2 pointer-events-none"
       )}>
 

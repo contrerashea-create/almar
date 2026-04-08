@@ -15,6 +15,8 @@ export default function HeaButton() {
     return () => clearTimeout(timer);
   }, []);
 
+  return null;
+
   return (
     <div
       className={cn(

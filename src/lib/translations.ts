@@ -84,7 +84,7 @@ export const translations = {
     },
     whyUs: {
       eyebrow: "¿Por qué Almar?",
-      title: "Real Estate with Soul",
+      title: "Almar Real Estate with Soul",
       subtitle:
         "Doce años operando en la Riviera Maya nos dan algo que no se improvisa: criterio, contactos y un proceso que funciona.",
       reasons: [
@@ -372,7 +372,7 @@ export const translations = {
     },
     nosotros: {
       eyebrow: "Quiénes somos",
-      title: "Real Estate with Soul",
+      title: "Almar Real Estate with Soul",
       subtitle:
         "Con más de 20 años de historia, Almar Real Estate nació con una convicción concreta: que comprar, vender o invertir en bienes raíces debería ser un proceso claro, humano y con resultados reales.",
       historyEyebrow: "Nuestra historia",
@@ -684,7 +684,7 @@ export const translations = {
     },
     whyUs: {
       eyebrow: "Why Almar?",
-      title: "Real Estate with Soul",
+      title: "Almar Real Estate with Soul",
       subtitle:
         "Twelve years operating in the Riviera Maya give us something that can't be improvised: insight, connections, and a process that works.",
       reasons: [
@@ -965,7 +965,7 @@ export const translations = {
     },
     nosotros: {
       eyebrow: "Who we are",
-      title: "Real Estate with Soul",
+      title: "Almar Real Estate with Soul",
       subtitle:
         "With over 20 years of history, Almar Real Estate was born with a clear conviction: that buying, selling, or investing in real estate should be a clear, human, and results-driven process.",
       historyEyebrow: "Our story",

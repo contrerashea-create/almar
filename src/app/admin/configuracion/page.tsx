@@ -13,7 +13,7 @@ export default function AdminConfiguracionPage() {
 
   const [config, setConfig] = useState({
     siteName: "Almar",
-    tagline: "Real Estate with Soul",
+    tagline: "Almar Real Estate with Soul",
     heroTitle: "Tu propiedad ideal en el Caribe Mexicano",
     heroSubtitle: "Casas, villas, departamentos y terrenos en Tulum, Playa del Carmen y toda la Riviera Maya.",
     primaryColor: "#043558",

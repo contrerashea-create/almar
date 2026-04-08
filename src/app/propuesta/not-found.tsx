@@ -8,7 +8,7 @@ export default function PropuestaNotFound() {
     <div className="min-h-screen flex items-center justify-center bg-background px-4 pt-20">
       <div className="text-center max-w-lg">
         <div className="mb-8">
-          <p className="font-heading text-8xl font-bold text-navy/10 select-none">soon</p>
+          <p className="font-heading text-8xl font-bold text-navy/10 select-none">404</p>
           <div className="-mt-6">
             <div className="flex items-baseline justify-center gap-[3px]">
               <span className="font-heading text-2xl font-bold tracking-[0.18em] text-navy">ALMAR</span>

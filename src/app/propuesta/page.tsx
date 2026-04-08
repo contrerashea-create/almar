@@ -17,67 +17,55 @@ const features = [
 
 export default function PropuestaPage() {
   return (
-    <div className="relative min-h-screen overflow-hidden font-sans" style={{ background: "#021f34" }}>
-      {/* Ambient gradients */}
-      <div
-        className="pointer-events-none absolute right-[-10%] top-[-20%] h-[600px] w-[600px] rounded-full opacity-20"
-        style={{ background: "radial-gradient(circle, #3069aa, transparent)" }}
-      />
-      <div
-        className="pointer-events-none absolute bottom-[-10%] left-[20%] h-[400px] w-[400px] rounded-full opacity-10"
-        style={{ background: "radial-gradient(circle, #3069aa, transparent)" }}
-      />
+    <div className="relative min-h-screen overflow-hidden font-sans bg-black text-white">
 
-      {/* Left badge */}
-      <Link
-        href="/propuesta/oferta"
-        className="fixed left-0 top-1/2 z-50 -translate-y-1/2 group"
-      >
-        <div className="flex flex-col items-center gap-3 border-r border-white/10 bg-white/5 px-3 py-6 transition-all duration-300 hover:bg-white/10">
-          <div
-            className="flex h-8 w-8 items-center justify-center rounded-full text-xs font-bold text-white"
-            style={{ background: "#3069aa" }}
-          >
-            GC
-          </div>
+      {/* Nav — HEA style */}
+      <nav className="flex items-center justify-between px-8 py-5 border-b border-white/10">
+        <a
+          href="https://consultinghea.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2.5 group"
+        >
           <span
-            className="text-[10px] uppercase tracking-[0.2em] text-white/40"
-            style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+            className="flex h-8 w-8 items-center justify-center rounded text-[10px] font-bold text-white"
+            style={{ background: "#3b82f6" }}
           >
-            Ver Propuesta
+            HEA
           </span>
-          <ArrowRight className="h-3 w-3 rotate-90 text-white/30 transition-colors group-hover:text-white/60" />
-        </div>
-      </Link>
+          <span className="text-sm font-semibold text-white group-hover:text-white/80 transition-colors">
+            HEA Consulting
+          </span>
+        </a>
+        <span className="text-xs text-white/40 uppercase tracking-widest hidden sm:block">
+          Propuesta exclusiva · Grupo Almar
+        </span>
+      </nav>
 
-      {/* Main content */}
-      <div className="flex min-h-screen flex-col items-center justify-center px-8 pb-24 text-center">
-        {/* Label */}
-        <p className="mb-8 text-xs uppercase tracking-[0.3em] text-white/40">
-          Propuesta exclusiva · Grupo Almar · 2026
+      {/* Hero */}
+      <div className="flex min-h-[calc(100vh-65px)] flex-col items-center justify-center px-8 pb-24 text-center">
+        <p className="mb-4 text-xs uppercase tracking-[0.3em] text-white/40">
+          Strategy · Technology · Results
         </p>
 
-        {/* Heading */}
-        <h1
-          className="mb-6 max-w-4xl text-5xl leading-tight text-white md:text-7xl"
-          style={{ fontFamily: "var(--font-heading)" }}
-        >
+        <h1 className="mb-6 max-w-4xl text-5xl font-bold leading-tight md:text-7xl"
+          style={{ fontFamily: "Montserrat, var(--font-heading), sans-serif" }}>
           Tu plataforma digital,{" "}
-          <span style={{ color: "#3069aa" }}>como debe ser.</span>
+          <span style={{ color: "#3b82f6" }}>como debe ser.</span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="mb-12 max-w-xl text-lg leading-relaxed text-white/50 md:text-xl">
-          Un solo sistema que conecta tu sitio web, tu catálogo de propiedades,
-          tus leads y tu equipo. Sin fricciones. Sin parches.
+        <p className="mb-2 max-w-xl text-lg leading-relaxed text-white/60 md:text-xl">
+          Un solo sistema que conecta tu sitio web, catálogo de propiedades, leads y equipo.
+        </p>
+        <p className="mb-12 text-sm text-gray-500">
+          Resultados reales. No solo planes.
         </p>
 
-        {/* CTAs */}
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <Link
             href="/propuesta/oferta"
-            className="flex items-center gap-2 rounded-sm px-8 py-3 text-sm text-white transition-colors"
-            style={{ background: "#3069aa" }}
+            className="flex items-center gap-2 rounded-lg px-8 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+            style={{ background: "#3b82f6" }}
           >
             Ver propuesta completa
             <ArrowRight className="h-4 w-4" />
@@ -85,7 +73,7 @@ export default function PropuestaPage() {
           <Link
             href="/"
             target="_blank"
-            className="flex items-center gap-2 rounded-sm border border-white/20 px-8 py-3 text-sm text-white/70 transition-colors hover:border-white/40 hover:text-white"
+            className="flex items-center gap-2 rounded-lg border border-white/20 px-8 py-3 text-sm text-white/60 transition-colors hover:border-white/40 hover:text-white"
           >
             Ver demo del sitio
             <ExternalLink className="h-4 w-4" />
@@ -93,9 +81,9 @@ export default function PropuestaPage() {
         </div>
       </div>
 
-      {/* Bottom features strip */}
-      <div className="absolute bottom-10 left-0 right-0 flex justify-center">
-        <div className="flex flex-wrap justify-center gap-6 text-[11px] uppercase tracking-widest text-white/25">
+      {/* Bottom strip */}
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center">
+        <div className="flex flex-wrap justify-center gap-6 text-[11px] uppercase tracking-widest text-white/20">
           {features.map((f) => (
             <span key={f}>{f}</span>
           ))}

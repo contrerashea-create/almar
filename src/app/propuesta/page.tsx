@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight, ExternalLink, TrendingUp, Globe, LayoutDashboard, BarChart3, ShieldCheck, Lock, Server } from "lucide-react";
 
 export const metadata = {
-  title: "Propuesta — Grupo Almar",
+  title: "Propuesta | Almar",
   robots: "noindex, nofollow",
 };
 
@@ -86,7 +86,7 @@ export default function PropuestaPage() {
           className="text-[11px] uppercase tracking-[0.2em] hidden sm:block"
           style={{ color: "rgba(255,255,255,0.3)" }}
         >
-          Propuesta exclusiva · Grupo Almar
+          Propuesta exclusiva · Almar
         </span>
       </nav>
 

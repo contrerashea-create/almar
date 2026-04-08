@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 
 export const metadata = {
-  title: "Showcase | Grupo Almar",
+  title: "Showcase | Almar",
   robots: "noindex, nofollow",
 };
 
@@ -81,7 +81,7 @@ export default function ShowcasePage() {
             Volver
           </Link>
           <div className="flex items-center gap-3">
-            <span className="text-xs hidden sm:block" style={{ color: "rgba(255,255,255,0.2)" }}>Grupo Almar · 2026</span>
+            <span className="text-xs hidden sm:block" style={{ color: "rgba(255,255,255,0.2)" }}>Almar · 2026</span>
             <a href="https://consultinghea.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 group">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -103,7 +103,7 @@ export default function ShowcasePage() {
             Plataforma digital integrada
           </p>
           <h1 className="mb-6 text-4xl font-light leading-tight md:text-6xl">
-            Grupo Almar
+            Almar Real Estate with Soul
             <span className="block font-light" style={{ color: "rgba(255,255,255,0.25)" }}>Digital Platform</span>
           </h1>
           <p className="mx-auto max-w-xl text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
@@ -232,7 +232,7 @@ export default function ShowcasePage() {
             ¿Listos para lanzar la plataforma?
           </h2>
           <p className="mb-10 mx-auto max-w-lg text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.45)" }}>
-            Todo lo que ves aquí fue diseñado específicamente para Grupo Almar. Hablemos para ponerlo en marcha.
+            Todo lo que ves aquí fue diseñado específicamente para Almar. Hablemos para ponerlo en marcha.
           </p>
           <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a href="mailto:consulting.hea@gmail.com"

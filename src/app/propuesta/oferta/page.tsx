@@ -107,7 +107,7 @@ export default function OfertaPage() {
           <h1 className="text-4xl font-light leading-tight text-white mb-3 md:text-5xl">
             Plataforma Digital<br />Integrada
           </h1>
-          <p className="text-xl font-light" style={{ color: "rgba(255,255,255,0.3)" }}>Grupo Almar</p>
+          <p className="text-xl font-light" style={{ color: "rgba(255,255,255,0.3)" }}>Almar Real Estate with Soul</p>
         </div>
 
         <div className="h-px mb-16" style={{ background: "rgba(255,255,255,0.06)" }} />

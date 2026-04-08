@@ -53,6 +53,8 @@ const entregables = [
   "Capacitación del equipo Almar",
   "30 horas de soporte técnico",
   "Garantía de funcionalidad 2 meses",
+  "Calculadora hipotecaria integrada en cada propiedad",
+  "Página de afiliados y programa de referidos",
 ];
 
 const roadmap = [

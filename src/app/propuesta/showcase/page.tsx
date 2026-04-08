@@ -26,15 +26,15 @@ const entregables = [
   { icon: GraduationCap, title: "Capacitación del equipo", desc: "Sesión de uso del panel al momento de la entrega." },
   { icon: Headphones, title: "30 hrs de soporte", desc: "Ajustes, cambios menores y asistencia operativa durante el periodo contratado." },
   { icon: ShieldCheck, title: "Garantía 2 meses", desc: "Corrección de errores atribuibles al desarrollo desde la entrega en producción." },
+  { icon: Calculator, title: "Calculadora hipotecaria", desc: "Simulación de financiamiento integrada en cada propiedad del catálogo." },
+  { icon: Share2, title: "Programa de afiliados", desc: "Página dedicada al programa de colaboradores y referidos de Almar." },
 ];
 
 const futuros = [
   { icon: Users, title: "CRM y gestión de leads", desc: "Captura automática, seguimiento y gestión de oportunidades. Disponible hoy como módulo opcional." },
   { icon: Home, title: "Portal privado para clientes", desc: "Seguimiento del proceso de búsqueda para compradores." },
-  { icon: Calculator, title: "Calculadora hipotecaria avanzada", desc: "Simulación de financiamiento integrada en cada propiedad." },
   { icon: GitCompare, title: "Comparador de propiedades", desc: "Comparación de características y precios en paralelo." },
   { icon: Map, title: "Mapa interactivo", desc: "Visualización geográfica del catálogo por zona." },
-  { icon: Share2, title: "Programa de afiliados", desc: "Sistema de referidos para agentes y colaboradores externos." },
   { icon: Zap, title: "Automatizaciones de marketing", desc: "Seguimiento automático de leads, campañas y notificaciones." },
 ];
 

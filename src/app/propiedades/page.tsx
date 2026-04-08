@@ -6,6 +6,7 @@ import { properties } from "@/lib/mock-data";
 import PropertyCard from "@/components/shared/property-card";
 import FiltersPanel, { Filters } from "@/components/catalog/filters-panel";
 import { cn } from "@/lib/utils";
+import { useCurrency } from "@/contexts/currency-context";
 
 const defaultFilters: Filters = {
   operacion: "",
@@ -29,6 +30,7 @@ export default function PropiedadesPage() {
   const [sort, setSort] = useState("reciente");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const { currency, setCurrency } = useCurrency();
 
   const filtered = useMemo(() => {
     let result = properties.filter((p) => p.status !== "borrador");
@@ -119,6 +121,28 @@ export default function PropiedadesPage() {
               </div>
 
               <div className="flex items-center gap-2">
+                {/* Currency toggle */}
+                <div className="flex border border-border rounded-full overflow-hidden text-xs font-semibold">
+                  <button
+                    onClick={() => setCurrency("MXN")}
+                    className={cn(
+                      "px-3 py-2 transition-colors",
+                      currency === "MXN" ? "bg-navy text-white" : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    MXN
+                  </button>
+                  <button
+                    onClick={() => setCurrency("USD")}
+                    className={cn(
+                      "px-3 py-2 transition-colors",
+                      currency === "USD" ? "bg-navy text-white" : "text-muted-foreground hover:text-foreground"
+                    )}
+                  >
+                    USD
+                  </button>
+                </div>
+
                 {/* Sort */}
                 <div className="relative">
                   <select

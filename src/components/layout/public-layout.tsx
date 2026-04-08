@@ -6,6 +6,7 @@ import Footer from "./footer";
 import WhatsAppButton from "./whatsapp-button";
 import HeaButton from "./hea-button";
 import { LangProvider } from "@/contexts/lang-context";
+import { CurrencyProvider } from "@/contexts/currency-context";
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -16,11 +17,13 @@ export default function PublicLayout({ children }: { children: React.ReactNode }
 
   return (
     <LangProvider>
-      <Navbar />
-      <main className="flex-1">{children}</main>
-      <Footer />
-      <WhatsAppButton />
-      <HeaButton />
+      <CurrencyProvider>
+        <Navbar />
+        <main className="flex-1">{children}</main>
+        <Footer />
+        <WhatsAppButton />
+        <HeaButton />
+      </CurrencyProvider>
     </LangProvider>
   );
 

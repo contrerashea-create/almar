@@ -6,6 +6,7 @@ import { Property, formatPrice } from "@/lib/mock-data";
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useLang } from "@/contexts/lang-context";
+import { useCurrency } from "@/contexts/currency-context";
 
 interface PropertyCardProps {
   property: Property;
@@ -21,6 +22,7 @@ const statusColors: Record<string, string> = {
 
 export default function PropertyCard({ property, className }: PropertyCardProps) {
   const { t } = useLang();
+  const { currency } = useCurrency();
   const statusLabelMap: Record<string, string> = {
     disponible: t.propertyCard.available,
     "en-negociacion": t.propertyCard.inNegotiation,
@@ -138,13 +140,26 @@ export default function PropertyCard({ property, className }: PropertyCardProps)
         {/* Precio */}
         <div className="mt-auto pt-3 border-t border-border flex items-end justify-between">
           <div>
-            <p className="text-xl font-heading font-bold text-navy">
-              {formatPrice(property.price, property.currency)}
-            </p>
-            {property.priceUSD && (
-              <p className="text-xs text-muted-foreground">
-                ≈ {formatPrice(property.priceUSD, "USD")}
-              </p>
+            {currency === "USD" && property.priceUSD ? (
+              <>
+                <p className="text-xl font-heading font-bold text-navy">
+                  {formatPrice(property.priceUSD, "USD")}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  ≈ {formatPrice(property.price, "MXN")}
+                </p>
+              </>
+            ) : (
+              <>
+                <p className="text-xl font-heading font-bold text-navy">
+                  {formatPrice(property.price, "MXN")}
+                </p>
+                {property.priceUSD && (
+                  <p className="text-xs text-muted-foreground">
+                    ≈ {formatPrice(property.priceUSD, "USD")}
+                  </p>
+                )}
+              </>
             )}
             {property.operation === "renta" && (
               <p className="text-xs text-muted-foreground">{t.propertyCard.perMonth}</p>
